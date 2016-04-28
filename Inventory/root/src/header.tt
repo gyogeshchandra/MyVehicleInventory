@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>[% title %]</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="[% c.uri_for('/static/css/main.css') %]" />
+</head>
+<body>
+  <div id="wrapper">
+    <div id="main_menu">
+      <ul>
+        <div id="main_menu_left">
+          <li><a href="[% c.uri_for_action('/index') %]">Home</a></li>
+          <li><a href="[% c.uri_for_action('blog/index') %]">Blog</a></li>
+          <li>Events</li>
+          <li>Links</li>
+          <li>News</li>
+          [% IF c.user_exists %] 
+            <li><a href="[% c.uri_for_action('/member/index') %]">Members</a></li>
+          [% END %] 
+        </div>
+        <div id="main_menu_right">
+          [% IF c.user_exists %] 
+            <li>[% c.user.name %] | <a href="[% c.uri_for_action('/logout/index') %]">Logout</a></li>
+          [% ELSE %]
+            <li><a href="[% c.uri_for_action('/login/index') %]">Login</a> | <a href="[% c.uri_for_action('/member/about') %]">Not a member?</a></li> 
+          [% END %]
+        </div>  
+      </ul>
+    </div> <!-- main_menu -->

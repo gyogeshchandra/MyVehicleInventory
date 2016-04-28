@@ -1,0 +1,16 @@
+[% INCLUDE header.tt title = 'My Vehicle Inventory: Error'; %]
+<div id="header">
+  <div id="header_title">My Vehicle Inventory</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="sidebar_wrapper">
+  </div>
+
+  <div id="content_with_sidebar">
+    <h3>Error</h3>
+    <p>You are not authorized to perform this action.</p>
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]

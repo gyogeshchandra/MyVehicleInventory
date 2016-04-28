@@ -1,0 +1,27 @@
+[% INCLUDE header.tt title = 'My Vehicle Inventory: Membership' %]
+<div id="header">
+  <div id="header_title">My Vehicle Inventory</div>
+  <div id="header_subtitle">'BITS PILANI MTECH DISSERTION'</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="sidebar_wrapper">
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        <p><a href="[% c.uri_for_action('/member/create') %]">Join now!</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="content_with_sidebar">
+    <h3>Why become a member?</h3>
+    <p>With membership you can:
+    <ul>
+      <li>Post blog entries and comments.</li>
+      <li>Optionally provide your contact and other information to other users.</li>
+      <li>View other member's contact information.</li>
+    </ul>
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]
