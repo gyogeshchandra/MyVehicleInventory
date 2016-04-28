@@ -1,0 +1,33 @@
+[% INCLUDE header.tt title = 'My Vehicle Inventory: '_ c.user.name %]
+<div id="header">
+  <div id="header_title">[% c.user.name %]</div>
+  <div id="header_subtitle">'BITS PILANI MTECH DISSERTION'</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="sidebar_wrapper">
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        <p><strong>[% c.user.name %]</strong></p>
+        <p class="sidebar_item_title"><a href="[% c.uri_for_action('/member/edit', c.user.id) %]">Edit Membership Info</a></p>
+        <p class="sidebar_item_title"><a href="[% c.uri_for_action('/member/delete', c.user.id) %]">Cancel Membership</a></p>
+      </div>
+    </div>
+   
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        <p><strong>Members</strong></p>
+        [% FOREACH user IN users %]
+          <p class="sidebar_item_title"><a href="[% c.uri_for_action('/member/show', user.id) %]">[% user.name %]</a></p>
+        [% END %]
+      </div>
+    </div>
+  </div>
+
+  <div id="content_with_sidebar">
+  <h3>Members</h3>
+  <p>You may update your personal membership information and view other member's information.</p>
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]

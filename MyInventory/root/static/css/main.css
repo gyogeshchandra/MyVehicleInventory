@@ -1,0 +1,287 @@
+#wrapper {
+  width: 960px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#header {
+  height: 100px;
+  margin-left: 20px;
+  background: #222930;
+  background-position: left bottom;
+  background-repeat: no-repeat; 
+}
+
+#header_title {
+  margin-left: 70px;
+  padding-top: 22px;
+  color: #87ceeb;
+  font-size: 2.2em;
+  font-weight: bold;
+}
+
+#header_subtitle {
+  margin-left: 70px;
+  margin-top: 2px;
+  color: #87ceeb;
+  font-size: 0.9em;
+}
+
+#footer {
+  padding-top: 0.4em;
+  padding-bottom: 1.5em;
+  background: #004060;
+  color: #FFFFFF;
+  font-size: 0.9em;
+}
+
+body {
+  font-family: arial;
+  margin-top: 0px;
+  background: #222930;
+}
+
+#main_menu {
+  border-left: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
+  border-bottom-left-radius: 0.3em; 
+  border-bottom-right-radius: 0.3em; 
+  background: #003050;
+  font-size: 0.9em;
+
+  color: #FFFFFF;
+}
+
+#main_menu ul {
+  padding-top: 0.275em;
+  padding-bottom: 0.18em;
+  margin: auto; /* center horizontally */
+  list-style: none; 
+
+  /* Menu background/border has no vertical height without
+  this, I don't know why it works. */
+  overflow: hidden;
+}
+
+#main_menu a {
+  color: #87ceeb;
+  text-decoration: none; 
+}
+
+#main_menu a:hover {
+  color: #FFFFFF;
+  text-decoration: underline; 
+}
+
+/*
+#footer a {
+  color: #87ceeb;
+  text-decoration: none; 
+}
+
+#footer a:hover {
+  color: #FFFFFF;
+  text-decoration: underline; 
+}
+*/
+
+#main_menu_left li {
+  padding-right: 5em;
+  /*padding-left: 0em;*/
+  margin-left: -1.5em;
+  float: left;
+  /*width: 1em;*/
+}
+
+#main_menu_right li {
+  /*padding-right: 0em;*/
+  /*padding-left: 40px;*/
+  margin-right: 1em;
+  float: right;
+  /*width: 12.5em;*/
+}
+
+#content_wrapper {
+  border: 1px solid #000000;
+  border-radius: 0.3em; 
+  background: #FFFFFF;
+  /*background: #A4D3EE;*/
+
+  /* Expand content area when sidebar is vertically longer than content. */
+  overflow: auto; 
+}
+
+/* formhandler generates html with id selectors named 'content' for it's
+ * 'content' fields in the blog and blogcomments forms. For this reason I
+ * renamed the 'content' id style 'content_with_sidebar'. */
+
+#content_with_sidebar {
+  margin-right: 225px;
+  margin-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+#content_without_sidebar {
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+#sidebar_wrapper {
+  float: right;
+}
+
+.sidebar_item {
+  width: 200px;
+  margin-right: 10px;
+  margin-top: 13px;
+  margin-bottom: 10px;
+  border: 1px solid #000000;
+  border-radius: 0.3em; 
+  /*background: #FFFFFF;*/
+}
+
+.sidebar_item_content {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+#user_form_button {
+  margin-left: 140px;
+}
+
+#user_form .label {
+  float: left;
+  width: 140px;
+} 
+
+#user_form_textarea {
+  margin-top: -1.15em;
+  margin-left: 140px;
+}
+
+.content_title {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-top: 0.3em;
+}
+
+.content_subtitle {
+  font-size: 0.8em;
+  margin-top: -1.6em;
+}
+
+.content_title a {
+  color: #004080;
+  text-decoration: none; 
+}
+
+.content_title a:hover {
+  color: #004080;
+  text-decoration: underline; 
+}
+
+.sidebar_item_title {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.sidebar_item_title a {
+  color: #004080;
+  text-decoration: none; 
+}
+
+.sidebar_item_title a:hover {
+  color: #004080;
+  text-decoration: underline; 
+}
+
+.sidebar_item_subtitle {
+  font-size: 0.65em;
+  margin-top: -1.5em;
+}
+
+.sidebar_item_sub_subtitle {
+  font-size: 0.65em;
+  margin-top: -1.0em;
+}
+
+.bottom_of_content {
+  border-bottom: 2px solid #87ceeb;
+  margin-top: 1.5em;
+  margin-bottom: 1.3em;
+}
+
+.top_of_comments {
+  margin-top: 1.3em;
+  border-bottom: 2px solid #87ceeb;
+  margin-bottom: -0.5em;
+}
+
+.between_comments {
+  margin-top: -0.6em;
+  border-bottom: 2px solid #87ceeb;
+  margin-bottom: -0.5em;
+}
+
+.bottom_of_comments {
+  border-bottom: 2px solid #87ceeb;
+  margin-top: -0.6em;
+  margin-bottom: 1.3em;
+}
+
+.comment_content {
+  margin-bottom: 1em;
+}
+
+.comment_subtitle {
+  font-size: 0.7em;
+  color: #004080; 
+  margin-top: 1.2em;
+}
+
+.page_divider_with_sidebar {
+  border-bottom: 2px solid #87ceeb;
+  margin-top: 1.3em;
+  margin-bottom: 1.3em;
+}
+
+.label10 {
+  float: left;
+  width: 5.5em;
+} 
+
+/*
+img.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
+}
+
+#homewrap {
+  margin-top: 0.2em;
+}
+*/
+
+#homefooter {
+  margin: -0.5em 4.2em 0.5em 4.6em;
+  color: #87ceeb;
+}
+
+#homepage {
+  height: 675px;
+  margin-right: 10px;
+  margin-left: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 0;
+  background: 222930;
+  background-image: url(../images/vehicle.gif);
+  background-position: center;
+  background-repeat: no-repeat; 
+}
+

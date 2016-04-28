@@ -1,0 +1,43 @@
+[% INCLUDE header.tt title = 'My Vehicle Inventory: '_ c.user.name %]
+<div id="header">
+  <div id="header_title">[% c.user.name %]</div>
+  <div id="header_subtitle">BITS PILANI MTECH DISSERTION</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="content_without_sidebar">
+  <h3>Create New Blog Entry</h3>
+
+  <form method="post" action="[% c.uri_for_action('/blog/entries/create') %]">
+    <table>
+
+      <tr>
+        <td>Title:</td>
+      </tr>
+      <tr>
+        <td><textarea name="title" rows="1" cols="88" wrap="virtual"></textarea></td>
+      </tr>
+      <tr>
+        <td><p></p></td>
+      </tr>
+      <tr>
+        <td>Content:</td>
+      </tr>
+      <tr>
+        <td><textarea name="content" rows="20" cols="88" wrap="virtual"></textarea></td>
+      </tr>
+
+      <tr>
+        <td><p>Do you really want to create this new blog entry?</p></td>
+      </tr>
+      <tr>
+        <td><input type="submit" name="submit" value="Yes" /> <input type="submit" name="submit" value="No" /></td>
+      </tr>
+
+    </table>
+  </form> 
+  
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]

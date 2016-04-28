@@ -1,0 +1,15 @@
+[% INCLUDE header.tt title = 'My Vehicle Inventory'; %]
+<div id="header">
+  <div id="header_title">My Vehicle Inventory</div>
+  <div id="header_subtitle">'BITS PILANI MTECH DISSERTION'</div>
+</div>
+
+<div id="homepage">
+</div>
+
+    <div id="homefooter">
+      <p>&copy; My Vehicle Inventory 2016 is a registered trademark<span style="float:right">Yogesh Chandra</span></p>
+    </div>
+  </div> <!-- wrapper -->
+</body>
+</html>

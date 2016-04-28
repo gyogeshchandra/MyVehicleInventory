@@ -1,0 +1,90 @@
+[% INCLUDE header.tt title = 'My Vehicle Inventory: Join'; %]
+<div id="header">
+  <div id="header_title">My Vehicle Inventory</div>
+  <div id="header_subtitle">'BITS PILANI MTECH DISSERTION'</div>
+</div>
+
+<div id="content_wrapper">
+  <div id="sidebar_wrapper">
+    <div class="sidebar_item">
+      <div class="sidebar_item_content">
+        <p><strong>Member Usernames</strong></p>
+        [% FOREACH user IN users %]
+          <p class="sidebar_item_title">[% user.username %]</p>
+        [% END %]
+      </div>
+    </div>
+  </div>
+
+  <div id="content_with_sidebar">
+    <h3>Join My Vehicle Inventory</h3>
+
+    <form id="user_form" name="[% form.name %]" action="[% c.uri_for_action('/member/create') %]" method="post"> 
+        [% f = form.field('username') %]
+        <label class="label" for="[% f.name %]">[% f.label %]:</label>
+        <input type="text" name="[% f.name %]" id="[% f.name %]" value="[% f.fif %]"> 
+      <br>
+        [% f = form.field('password') %]
+        <label class="label" for="[% f.name %]">[% f.label %]:</label>
+        <input type="password" name="[% f.name %]" id="[% f.name %]" value=""> 
+      <br>
+        [% f = form.field('password_confirm') %]
+        <label class="label" for="[% f.name %]">[% f.label %]:</label>
+        <input type="password" name="[% f.name %]" id="[% f.name %]" value=""> 
+      <br>
+        [% f = form.field('email') %]
+        <label class="label" for="[% f.name %]">[% f.label %]:</label>
+        <input type="email" name="[% f.name %]" id="[% f.name %]" value="[% f.fif %]"> 
+        [% f = form.field('email_visible') %]
+        <input type="checkbox" name="[% f.name %]" id="[% f.name %]" value="1"> 
+        <label for="[% f.name %]">Visible</label>
+      <br>
+        [% f = form.field('firstname') %]
+        <label class="label" for="[% f.name %]">[% f.label %]:</label>
+        <input type="text" name="[% f.name %]" id="[% f.name %]" value="[% f.fif %]"> 
+      <br>
+        [% f = form.field('lastname') %]
+        <label class="label" for="[% f.name %]">[% f.label %]:</label>
+        <input type="text" name="[% f.name %]" id="[% f.name %]" value="[% f.fif %]"> 
+      <br>
+        [% f = form.field('location') %]
+        <label class="label" for="[% f.name %]">[% f.label %]:</label>
+        <input type="text" name="[% f.name %]" id="[% f.name %]" value="[% f.fif %]"> 
+      <br>
+        About me:
+        <div id='user_form_textarea'>
+        [% form.field('about_me').render %]
+        </div>
+      <input id="user_form_button" class="button" name="submit" type="submit" value="Submit"/>
+    </form> 
+
+    <div class="page_divider_with_sidebar"></div>
+    <p>Username and Password are required.</p>
+    <ul>
+      <li>Username must be unique among member usernames.</li>
+      <li>They may contain upper and lowercase letters, digits, and the underscore character.</li>
+    </ul>
+    <p>A valid, unique email address is required.</p>
+    <ul>
+      <li>If "Email visible" is checked, it will be visible only to members via the Members page.</li>
+      <li>If "Email visible" is not checked, it will be visible only to the MyInventory Fan Club Webmaster.</li>
+    </ul>
+    <p>Firstname and Lastname are optional.</p>
+    <ul>
+      <li>If either are provided, they will be used in page content and visible to both members and non-members alike.</li>
+      <li>If neither are provided, your Username will be used in-lieu of them.</li>
+    </ul>
+    <p>Location is optional.</p>
+    <ul>
+      <li>If provided, it will be visible only to members via the Members page.</li>
+      <li>For example, the MyInventory Fan Club Webmaster's location is: Dover-Foxcroft, Maine, USA</li>
+    </ul>
+    <p>"About me" is optional.</p>
+    <ul>
+      <li>If provided, it will be visible only to members via the Members page.</li>
+      <li>HTML Tags may be used for styling.</li>
+    </ul>
+  </div>
+</div>
+
+[% INCLUDE footer.tt %]
