@@ -64,14 +64,14 @@ sub create :Local {
   
   $c->res->redirect($c->uri_for_action('/index'));
   # Form validated and data inserted into database,
-  # now auto-generate new member's first blog entry.
+  # now auto-generate new member's first inventory entry.
 
   ##Get new member info.
   # my $row = $c->model('DB::User')->most_recent->first; 
   # my $userid = $row->id; 
   # my $name = $row->name; 
 
-  ##Create new member's first blog entry.
+  ##Create new member's first inventory entry.
   # $row = $c->model('DB::Blog')->new_result({}); 
   # $row->userid($userid);
   # $row->title("Welcome ".$name."!");
@@ -79,14 +79,14 @@ sub create :Local {
 # "<h3>You Are Now A Member Of MyInventory!</h3>
 # <p>You may now:</p>
 # <ul>
-# <li>Post blog entries and comments via the Blog pages.</li>
+# <li>Post inventory entries and comments via the Blog pages.</li>
 # <li>Optionally provide your contact and other information to other users via the Members pages.</li>
 # <li>View other member's contact information via the Members pages.</li>
 # </ul>
 # <h3>About This Blog Entry</h3>
-# <p>This blog entry was automatically created when you became a member of the YARDBIRD Fan Club, you may edit or delete it as you wish.</p>
-# <p>It is suggested that you edit this blog entry to see how HTML Tags may be used to style blog entries and comments.</p>
-# <p>Happy blogging!</p>"
+# <p>This inventory entry was automatically created when you became a member of the MyVehicleInventory, you may edit or delete it as you wish.</p>
+# <p>It is suggested that you edit this inventory entry to see how HTML Tags may be used to style inventory entries and comments.</p>
+# <p>Happy inventoryging!</p>"
 # );
   # $row->created(DateTime->now);
   # $row->insert; 
@@ -94,8 +94,8 @@ sub create :Local {
   ##Automatically login new user.
   # $c->authenticate({ username => $self->form->value->{username}, password => $self->form->value->{password} });
 
-  ##Redirect to new user's blog entries page.
-  # $c->res->redirect($c->uri_for_action('/blog/entries/index', $row->id));
+  ##Redirect to new user's inventory entries page.
+  # $c->res->redirect($c->uri_for_action('/inventory/entries/index', $row->id));
 }
 
 sub edit :Local :Args(1) {

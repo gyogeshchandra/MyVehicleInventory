@@ -11,7 +11,7 @@
       <ul>
         <div id="main_menu_left">
           <li><a href="[% c.uri_for_action('/index') %]">Home</a></li>
-          <li><a href="[% c.uri_for_action('blog/index') %]">Blog</a></li>
+          <li><a href="[% c.uri_for_action('inventory/index') %]">Inventory</a></li>
           <li>Events</li>
           <li>Links</li>
           <li>News</li>

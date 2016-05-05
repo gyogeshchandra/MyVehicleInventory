@@ -156,13 +156,13 @@ __PACKAGE__->has_many(
 
 Type: has_many
 
-Related object: L<MyInventory::Schema::Result::Blog>
+Related object: L<MyInventory::Schema::Result::Inventory>
 
 =cut
 
 __PACKAGE__->has_many(
   "blogs",
-  "MyInventory::Schema::Result::Blog",
+  "MyInventory::Schema::Result::Inventory",
   { "foreign.userid" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );

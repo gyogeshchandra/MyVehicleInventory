@@ -67,7 +67,7 @@
     <p>A valid, unique email address is required.</p>
     <ul>
       <li>If "Email visible" is checked, it will be visible only to members via the Members page.</li>
-      <li>If "Email visible" is not checked, it will be visible only to the YARDBIRD Fan Club Webmaster.</li>
+      <li>If "Email visible" is not checked, it will be visible only to the MyVehcileInventory members.</li>
     </ul>
     <p>Firstname and Lastname are optional.</p>
     <ul>
@@ -77,7 +77,7 @@
     <p>Location is optional.</p>
     <ul>
       <li>If provided, it will be visible only to members via the Members page.</li>
-      <li>For example, the YARDBIRD Fan Club Webmaster's location is: Dover-Foxcroft, Maine, USA</li>
+      <li>For example, the MyVehicleInventory member's location is: Pune, Maharashtra, INDIA</li>
     </ul>
     <p>"About me" is optional.</p>
     <ul>

@@ -1,4 +1,4 @@
-package MyInventory::Controller::Blog::Entries;
+package MyInventory::Controller::Inventory::Entries;
 use Moose;
 use namespace::autoclean;
 use MyInventory::Form::BlogComment;
@@ -14,7 +14,7 @@ has 'comment_form' => (
 
 =head1 NAME
 
-MyInventory::Controller::Blog::Entries - Catalyst Controller
+MyInventory::Controller::Inventory::Entries - Catalyst Controller
 
 =head1 DESCRIPTION
 
@@ -32,17 +32,17 @@ Catalyst Controller.
 sub index :Path :Args(1) {
   my ($self, $c, $bID) = @_;
 
-  my $row = $c->model('DB::Blog')->specific($bID)->first;
+  my $row = $c->model('DB::Inventory')->specific($bID)->first;
   $c->stash(blog_entry => $row);
-  $c->stash(blog_entries => [$c->model('DB::Blog')->all_user($row->userid->id)]);
+  $c->stash(blog_entries => [$c->model('DB::Inventory')->all_user($row->userid->id)]);
   $c->stash(blog_comments => $c->model('DB::BlogComment'));
 
-  # Determine if logged-in user has created any blog entries and put
+  # Determine if logged-in user has created any inventory entries and put
   # flag in stash. The template uses this to allow user to create
-  # first blog entry if they have none.
+  # first inventory entry if they have none.
   if ($c->user_exists) {
     if ($c->user->id != $row->userid->id) {
-      $row = $c->model('DB::Blog')->all_user($c->user->id)->first;
+      $row = $c->model('DB::Inventory')->all_user($c->user->id)->first;
       if ($row) {
         $c->stash(user_has_no_blog_entries => 0);
       }
@@ -54,7 +54,7 @@ sub index :Path :Args(1) {
 
   # Don't allow comments to be added if user is not logged in.
   if ($c->user_exists) {
-    $c->stash(template => 'blog/entries/index.tt', form => $self->comment_form);
+    $c->stash(template => 'inventory/entries/index.tt', form => $self->comment_form);
 
     $row = $c->model('DB::BlogComment')->new_result({});
     $row->blogid($bID);
@@ -68,7 +68,7 @@ sub index :Path :Args(1) {
     );
 
     # Form validated, refresh the page.
-    $c->res->redirect($c->uri_for_action('/blog/entries/index', $bID));
+    $c->res->redirect($c->uri_for_action('/inventory/entries/index', $bID));
   }
   else {
     return;
@@ -85,7 +85,7 @@ sub create :Local :Args(0) {
 
   my $submit = $c->req->params->{submit};
   if ($submit eq "Yes") {
-    $row = $c->model('DB::Blog')->new_result({}); 
+    $row = $c->model('DB::Inventory')->new_result({}); 
     $row->title($c->req->params->{title});
     $row->content($c->req->params->{content});
     $row->userid($c->user->id);
@@ -95,13 +95,13 @@ sub create :Local :Args(0) {
   }
 
   if ($submit eq "Yes" || $submit eq "No") {
-    # Get the most recent blog entry if one exists and display it, else go to the /blog/index page.
-    $row = $c->model('DB::Blog')->all_user($c->user->id)->first; 
+    # Get the most recent inventory entry if one exists and display it, else go to the /inventory/index page.
+    $row = $c->model('DB::Inventory')->all_user($c->user->id)->first; 
     if ($row) {
-      $c->res->redirect($c->uri_for_action('/blog/entries/index', $row->id));
+      $c->res->redirect($c->uri_for_action('/inventory/entries/index', $row->id));
     }
     else {
-      $c->res->redirect($c->uri_for_action('/blog/index'));
+      $c->res->redirect($c->uri_for_action('/inventory/index'));
     }
   }
 }
@@ -112,9 +112,9 @@ sub edit :Local :Args(1) {
   # Detach if user is not logged-in.
   $c->detach('/unauthorized_action') if !$c->user_exists;
 
-  # Prepare to edit blog entry.
+  # Prepare to edit inventory entry.
   # Detach if user is attempting to edit an entry that doesn't belong to user.
-  my $row = $c->model('DB::Blog')->specific($bID)->first; 
+  my $row = $c->model('DB::Inventory')->specific($bID)->first; 
   $c->detach('/unauthorized_action') if ($c->user->id != $row->userid->id);
 
   $c->stash(blog_entry => $row);
@@ -128,13 +128,13 @@ sub edit :Local :Args(1) {
   }
 
   if ($submit eq "Yes" || $submit eq "No") {
-    # Get the most recent blog entry if one exists and display it, else go to the /blog/index page.
-    $row = $c->model('DB::Blog')->all_user($c->user->id)->first; 
+    # Get the most recent inventory entry if one exists and display it, else go to the /inventory/index page.
+    $row = $c->model('DB::Inventory')->all_user($c->user->id)->first; 
     if ($row) {
-      $c->res->redirect($c->uri_for_action('/blog/entries/index', $row->id));
+      $c->res->redirect($c->uri_for_action('/inventory/entries/index', $row->id));
     }
     else {
-      $c->res->redirect($c->uri_for_action('/blog/index'));
+      $c->res->redirect($c->uri_for_action('/inventory/index'));
     }
   }
 }
@@ -146,39 +146,39 @@ sub delete :Local :Args(1) {
   $c->detach('/unauthorized_action') if !$c->user_exists;
 
   # Detach if user attempts to delete an entry that doesn't belong to them.
-  my $row = $c->model('DB::Blog')->specific($bID)->first; 
+  my $row = $c->model('DB::Inventory')->specific($bID)->first; 
   $c->detach('/unauthorized_action') if ($c->user->id != $row->userid->id);
 
   $c->stash(blog_entry => $row);
-  $c->stash(blog_entries => [$c->model('DB::Blog')->all_user($c->user->id)]);
+  $c->stash(blog_entries => [$c->model('DB::Inventory')->all_user($c->user->id)]);
   $c->stash(blog_comments => $c->model('DB::BlogComment'));
 
   my $submit = $c->req->params->{submit};
   if ($submit eq 'Yes') {
     $row->delete; 
 
-    # Get the most recent blog entry if one exists and display it, else go to the /blog/index page.
-    $row = $c->model('DB::Blog')->all_user($c->user->id)->first; 
+    # Get the most recent inventory entry if one exists and display it, else go to the /inventory/index page.
+    $row = $c->model('DB::Inventory')->all_user($c->user->id)->first; 
     if ($row) {
-      $c->res->redirect($c->uri_for_action('/blog/entries/index', $row->id));
+      $c->res->redirect($c->uri_for_action('/inventory/entries/index', $row->id));
     }
     else {
-      $c->res->redirect($c->uri_for_action('/blog/index'));
+      $c->res->redirect($c->uri_for_action('/inventory/index'));
     }
   }
   elsif ($submit eq 'No') {
-    $c->res->redirect($c->uri_for_action('/blog/entries/index', $bID));
+    $c->res->redirect($c->uri_for_action('/inventory/entries/index', $bID));
   }
 }
  
-sub edit_comments :Path('/blog/comments/edit') :Args(1) {
+sub edit_comments :Path('/inventory/comments/edit') :Args(1) {
   my ($self, $c, $uID) = @_;
 
   # Detach if user is not logged-in, or is trying to delete somebody else's comments.
   $c->detach('/unauthorized_action') if !$c->user_exists;
   $c->detach('/unauthorized_action') if ($c->user->id != $uID);
 
-  # blog/entries/index.tt only makes the "Edit/Delete Comments" link available if user
+  # inventory/entries/index.tt only makes the "Edit/Delete Comments" link available if user
   # has comments. The only way a user would get this far into this subroutine if they
   # had no comments would be if they entered a malicious uri, so detach if that occurs.
   my @rows = $c->model('DB::BlogComment')->all_user($uID);
@@ -203,13 +203,13 @@ sub edit_comments :Path('/blog/comments/edit') :Args(1) {
   }
 
   if ($submit eq "Yes" || $submit eq "No") {
-    # Get the most recent blog entry if one exists and display it, else go to the /blog/index page.
-    my $row = $c->model('DB::Blog')->all_user($uID)->first; 
+    # Get the most recent inventory entry if one exists and display it, else go to the /inventory/index page.
+    my $row = $c->model('DB::Inventory')->all_user($uID)->first; 
     if ($row) {
-      $c->res->redirect($c->uri_for_action('/blog/entries/index', $row->id));
+      $c->res->redirect($c->uri_for_action('/inventory/entries/index', $row->id));
     }
     else {
-      $c->res->redirect($c->uri_for_action('/blog/index'));
+      $c->res->redirect($c->uri_for_action('/inventory/index'));
     }
   }
 }
